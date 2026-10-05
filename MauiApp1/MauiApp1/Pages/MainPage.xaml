@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MauiApp1.Pages.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="{AppThemeBinding Light={StaticResource PageBackground}, Dark={StaticResource PageBackgroundDark}}"
+    Title="Hello MAUI">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="28,48"
+            Spacing="22"
+            VerticalOptions="Center">
+
+            <Border
+                Padding="12,6"
+                BackgroundColor="{StaticResource Secondary}"
+                HorizontalOptions="Center"
+                StrokeThickness="0">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="20" />
+                </Border.StrokeShape>
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="14"
+                    Text="MY FIRST .NET MAUI APP"
+                    TextColor="{StaticResource PrimaryDarkText}" />
+            </Border>
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="42"
+                HorizontalTextAlignment="Center"
+                Text="Hello, MAUI!"
+                TextColor="{AppThemeBinding Light={StaticResource HeadingText}, Dark=White}" />
+
+            <Label
+                FontSize="17"
+                HorizontalTextAlignment="Center"
+                Text="One shared C# and XAML app for Android, iOS, macOS, and Windows."
+                TextColor="{AppThemeBinding Light={StaticResource BodyText}, Dark={StaticResource BodyTextDark}}" />
+
+            <Border
+                Margin="0,12"
+                Padding="28"
+                BackgroundColor="{AppThemeBinding Light=White, Dark={StaticResource CardBackgroundDark}}"
+                Stroke="{StaticResource Secondary}"
+                StrokeThickness="2">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="28" />
+                </Border.StrokeShape>
+                <VerticalStackLayout Spacing="12">
+                    <Label
+                        FontSize="16"
+                        HorizontalTextAlignment="Center"
+                        Text="Button taps"
+                        TextColor="{AppThemeBinding Light={StaticResource BodyText}, Dark={StaticResource BodyTextDark}}" />
+
+                    <Label
+                        x:Name="CountLabel"
+                        FontAttributes="Bold"
+                        FontSize="64"
+                        HorizontalTextAlignment="Center"
+                        SemanticProperties.Description="Current count"
+                        Text="0"
+                        TextColor="{StaticResource Primary}" />
+
+                    <Button
+                        x:Name="CountButton"
+                        Padding="24,14"
+                        BackgroundColor="{StaticResource Primary}"
+                        Clicked="OnCountClicked"
+                        CornerRadius="18"
+                        FontAttributes="Bold"
+                        FontSize="17"
+                        HorizontalOptions="Fill"
+                        SemanticProperties.Hint="Increases the counter by one"
+                        Text="Tap to count"
+                        TextColor="White" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Label
+                FontSize="13"
+                HorizontalTextAlignment="Center"
+                Text="Edit Pages/MainPage.xaml to make this screen your own."
+                TextColor="{AppThemeBinding Light={StaticResource BodyText}, Dark={StaticResource BodyTextDark}}" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

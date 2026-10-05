@@ -1,0 +1,10 @@
+.vs/
+.android-sdk/
+**/bin/
+**/obj/
+*.user
+*.suo
+*.userprefs
+*.pfx
+*.keystore
+*.jks
