@@ -1,0 +1,1159 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<?xaml-comp compile="true" ?>
+
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:shimmer="clr-namespace:Syncfusion.Maui.Toolkit.Shimmer;assembly=Syncfusion.Maui.Toolkit">
+
+    <!-- BATTLEGRID COLOR PALETTE -->
+
+    <Color x:Key="BattleSky">#79C9EB</Color>
+    <Color x:Key="BattleOcean">#104F79</Color>
+    <Color x:Key="BattleOceanLight">#12658F</Color>
+    <Color x:Key="BattleCard">#DDF3FC</Color>
+    <Color x:Key="BattleNavy">#07365A</Color>
+    <Color x:Key="BattleOrange">#FFA62B</Color>
+    <Color x:Key="BattleSecondaryText">#386989</Color>
+    <Color x:Key="BattleBorder">#4B9EC3</Color>
+
+
+    <!-- ACTIVITY INDICATOR -->
+
+    <Style TargetType="ActivityIndicator">
+        <Setter Property="Color"
+                Value="{StaticResource BattleOrange}" />
+    </Style>
+
+
+    <!-- INDICATOR VIEW -->
+
+    <Style TargetType="IndicatorView">
+        <Setter Property="IndicatorColor"
+                Value="#A1D1E6" />
+        <Setter Property="SelectedIndicatorColor"
+                Value="{StaticResource BattleOcean}" />
+    </Style>
+
+
+    <!-- BORDER -->
+
+    <Style TargetType="Border">
+        <Setter Property="Stroke"
+                Value="{StaticResource BattleBorder}" />
+
+        <Setter Property="StrokeShape"
+                Value="Rectangle" />
+
+        <Setter Property="StrokeThickness"
+                Value="1" />
+
+        <Setter Property="Background">
+            <SolidColorBrush Color="Transparent" />
+        </Setter>
+    </Style>
+
+
+    <!-- BOX VIEW -->
+
+    <Style TargetType="BoxView">
+        <Setter Property="BackgroundColor"
+                Value="{StaticResource BattleOceanLight}" />
+    </Style>
+
+
+    <!-- BUTTON -->
+
+    <Style TargetType="Button">
+
+        <Setter Property="TextColor"
+                Value="{StaticResource BattleNavy}" />
+
+        <Setter Property="BackgroundColor"
+                Value="{StaticResource BattleOrange}" />
+
+        <Setter Property="FontFamily"
+                Value="OpenSansRegular" />
+
+        <Setter Property="FontSize"
+                Value="16" />
+
+        <Setter Property="FontAttributes"
+                Value="Bold" />
+
+        <Setter Property="BorderWidth"
+                Value="0" />
+
+        <Setter Property="CornerRadius"
+                Value="10" />
+
+        <Setter Property="Padding"
+                Value="14,10" />
+
+        <Setter Property="MinimumHeightRequest"
+                Value="44" />
+
+        <Setter Property="MinimumWidthRequest"
+                Value="44" />
+
+        <Setter Property="VisualStateManager.VisualStateGroups">
+
+            <VisualStateGroupList>
+
+                <VisualStateGroup x:Name="CommonStates">
+
+                    <VisualState x:Name="Normal" />
+
+                    <VisualState x:Name="Disabled">
+                        <VisualState.Setters>
+
+                            <Setter Property="TextColor"
+                                    Value="#66869A" />
+
+                            <Setter Property="BackgroundColor"
+                                    Value="#BDD9E7" />
+
+                        </VisualState.Setters>
+                    </VisualState>
+
+                    <VisualState x:Name="PointerOver" />
+
+                </VisualStateGroup>
+
+            </VisualStateGroupList>
+
+        </Setter>
+
+    </Style>
+
+
+    <!-- CHECKBOX -->
+
+    <Style TargetType="CheckBox">
+
+        <Setter Property="Color"
+                Value="{StaticResource BattleOcean}" />
+
+        <Setter Property="MinimumHeightRequest"
+                Value="44" />
+
+        <Setter Property="MinimumWidthRequest"
+                Value="44" />
+
+        <Setter Property="VisualStateManager.VisualStateGroups">
+
+            <VisualStateGroupList>
+
+                <VisualStateGroup x:Name="CommonStates">
+
+                    <VisualState x:Name="Normal" />
+
+                    <VisualState x:Name="Disabled">
+                        <VisualState.Setters>
+
+                            <Setter Property="Color"
+                                    Value="#A1C3D5" />
+
+                        </VisualState.Setters>
+                    </VisualState>
+
+                </VisualStateGroup>
+
+            </VisualStateGroupList>
+
+        </Setter>
+
+    </Style>
+
+
+    <!-- DATE PICKER -->
+
+    <Style TargetType="DatePicker">
+
+        <Setter Property="TextColor"
+                Value="{StaticResource BattleNavy}" />
+
+        <Setter Property="BackgroundColor"
+                Value="Transparent" />
+
+        <Setter Property="FontFamily"
+                Value="OpenSansRegular" />
+
+        <Setter Property="FontSize"
+                Value="14" />
+
+        <Setter Property="MinimumHeightRequest"
+                Value="44" />
+
+        <Setter Property="MinimumWidthRequest"
+                Value="44" />
+
+        <Setter Property="VisualStateManager.VisualStateGroups">
+
+            <VisualStateGroupList>
+
+                <VisualStateGroup x:Name="CommonStates">
+
+                    <VisualState x:Name="Normal" />
+
+                    <VisualState x:Name="Disabled">
+                        <VisualState.Setters>
+
+                            <Setter Property="TextColor"
+                                    Value="#7B9CAF" />
+
+                        </VisualState.Setters>
+                    </VisualState>
+
+                </VisualStateGroup>
+
+            </VisualStateGroupList>
+
+        </Setter>
+
+    </Style>
+
+
+    <!-- EDITOR -->
+
+    <Style TargetType="Editor">
+
+        <Setter Property="TextColor"
+                Value="{StaticResource BattleNavy}" />
+
+        <Setter Property="BackgroundColor"
+                Value="Transparent" />
+
+        <Setter Property="FontFamily"
+                Value="OpenSansRegular" />
+
+        <Setter Property="FontSize"
+                Value="14" />
+
+        <Setter Property="PlaceholderColor"
+                Value="#668CA2" />
+
+        <Setter Property="MinimumHeightRequest"
+                Value="44" />
+
+        <Setter Property="MinimumWidthRequest"
+                Value="44" />
+
+        <Setter Property="VisualStateManager.VisualStateGroups">
+
+            <VisualStateGroupList>
+
+                <VisualStateGroup x:Name="CommonStates">
+
+                    <VisualState x:Name="Normal" />
+
+                    <VisualState x:Name="Disabled">
+                        <VisualState.Setters>
+
+                            <Setter Property="TextColor"
+                                    Value="#8BA6B6" />
+
+                        </VisualState.Setters>
+                    </VisualState>
+
+                </VisualStateGroup>
+
+            </VisualStateGroupList>
+
+        </Setter>
+
+    </Style>
+
+
+    <!-- ENTRY -->
+
+    <Style TargetType="Entry">
+
+        <Setter Property="TextColor"
+                Value="{StaticResource BattleNavy}" />
+
+        <Setter Property="BackgroundColor"
+                Value="Transparent" />
+
+        <Setter Property="FontFamily"
+                Value="OpenSansRegular" />
+
+        <Setter Property="FontSize"
+                Value="16" />
+
+        <Setter Property="PlaceholderColor"
+                Value="#668CA2" />
+
+        <Setter Property="MinimumHeightRequest"
+                Value="44" />
+
+        <Setter Property="MinimumWidthRequest"
+                Value="44" />
+
+        <Setter Property="VisualStateManager.VisualStateGroups">
+
+            <VisualStateGroupList>
+
+                <VisualStateGroup x:Name="CommonStates">
+
+                    <VisualState x:Name="Normal" />
+
+                    <VisualState x:Name="Disabled">
+                        <VisualState.Setters>
+
+                            <Setter Property="TextColor"
+                                    Value="#8BA6B6" />
+
+                        </VisualState.Setters>
+                    </VisualState>
+
+                </VisualStateGroup>
+
+            </VisualStateGroupList>
+
+        </Setter>
+
+    </Style>
+
+
+    <!-- FRAME -->
+
+    <Style TargetType="Frame">
+
+        <Setter Property="HasShadow"
+                Value="False" />
+
+        <Setter Property="BorderColor"
+                Value="{StaticResource BattleBorder}" />
+
+        <Setter Property="CornerRadius"
+                Value="12" />
+
+        <Setter Property="BackgroundColor"
+                Value="{StaticResource BattleCard}" />
+
+    </Style>
+
+
+    <!-- IMAGE BUTTON -->
+
+    <Style TargetType="ImageButton">
+
+        <Setter Property="Opacity"
+                Value="1" />
+
+        <Setter Property="BackgroundColor"
+                Value="Transparent" />
+
+        <Setter Property="BorderColor"
+                Value="Transparent" />
+
+        <Setter Property="BorderWidth"
+                Value="0" />
+
+        <Setter Property="CornerRadius"
+                Value="0" />
+
+        <Setter Property="MinimumHeightRequest"
+                Value="44" />
+
+        <Setter Property="MinimumWidthRequest"
+                Value="44" />
+
+        <Setter Property="VisualStateManager.VisualStateGroups">
+
+            <VisualStateGroupList>
+
+                <VisualStateGroup x:Name="CommonStates">
+
+                    <VisualState x:Name="Normal" />
+
+                    <VisualState x:Name="Disabled">
+                        <VisualState.Setters>
+
+                            <Setter Property="Opacity"
+                                    Value="0.5" />
+
+                        </VisualState.Setters>
+                    </VisualState>
+
+                    <VisualState x:Name="PointerOver" />
+
+                </VisualStateGroup>
+
+            </VisualStateGroupList>
+
+        </Setter>
+
+    </Style>
+
+
+    <!-- LABEL -->
+
+    <Style TargetType="Label">
+
+        <Setter Property="TextColor"
+                Value="{StaticResource BattleNavy}" />
+
+        <Setter Property="BackgroundColor"
+                Value="Transparent" />
+
+        <Setter Property="FontFamily"
+                Value="OpenSansRegular" />
+
+        <Setter Property="FontSize"
+                Value="14" />
+
+        <Setter Property="VisualStateManager.VisualStateGroups">
+
+            <VisualStateGroupList>
+
+                <VisualStateGroup x:Name="CommonStates">
+
+                    <VisualState x:Name="Normal" />
+
+                    <VisualState x:Name="Disabled">
+                        <VisualState.Setters>
+
+                            <Setter Property="TextColor"
+                                    Value="#8BA6B6" />
+
+                        </VisualState.Setters>
+                    </VisualState>
+
+                </VisualStateGroup>
+
+            </VisualStateGroupList>
+
+        </Setter>
+
+    </Style>
+
+
+    <!-- SPAN -->
+
+    <Style TargetType="Span">
+
+        <Setter Property="TextColor"
+                Value="{StaticResource BattleNavy}" />
+
+    </Style>
+
+
+    <!-- HEADLINE -->
+
+    <Style TargetType="Label"
+           x:Key="Headline">
+
+        <Setter Property="TextColor"
+                Value="{StaticResource BattleNavy}" />
+
+        <Setter Property="FontSize"
+                Value="32" />
+
+        <Setter Property="FontAttributes"
+                Value="Bold" />
+
+        <Setter Property="HorizontalOptions"
+                Value="Center" />
+
+        <Setter Property="HorizontalTextAlignment"
+                Value="Center" />
+
+    </Style>
+
+
+    <!-- SUB HEADLINE -->
+
+    <Style TargetType="Label"
+           x:Key="SubHeadline">
+
+        <Setter Property="TextColor"
+                Value="{StaticResource BattleSecondaryText}" />
+
+        <Setter Property="FontSize"
+                Value="24" />
+
+        <Setter Property="HorizontalOptions"
+                Value="Center" />
+
+        <Setter Property="HorizontalTextAlignment"
+                Value="Center" />
+
+    </Style>
+
+
+    <!-- LIST VIEW -->
+
+    <Style TargetType="ListView">
+
+        <Setter Property="SeparatorColor"
+                Value="#A1D1E6" />
+
+        <Setter Property="RefreshControlColor"
+                Value="{StaticResource BattleOcean}" />
+
+    </Style>
+
+
+    <!-- PICKER -->
+
+    <Style TargetType="Picker">
+
+        <Setter Property="TextColor"
+                Value="{StaticResource BattleNavy}" />
+
+        <Setter Property="TitleColor"
+                Value="{StaticResource BattleSecondaryText}" />
+
+        <Setter Property="BackgroundColor"
+                Value="Transparent" />
+
+        <Setter Property="FontFamily"
+                Value="OpenSansRegular" />
+
+        <Setter Property="FontSize"
+                Value="16" />
+
+        <Setter Property="MinimumHeightRequest"
+                Value="44" />
+
+        <Setter Property="MinimumWidthRequest"
+                Value="44" />
+
+        <Setter Property="VisualStateManager.VisualStateGroups">
+
+            <VisualStateGroupList>
+
+                <VisualStateGroup x:Name="CommonStates">
+
+                    <VisualState x:Name="Normal" />
+
+                    <VisualState x:Name="Disabled">
+                        <VisualState.Setters>
+
+                            <Setter Property="TextColor"
+                                    Value="#8BA6B6" />
+
+                            <Setter Property="TitleColor"
+                                    Value="#8BA6B6" />
+
+                        </VisualState.Setters>
+                    </VisualState>
+
+                </VisualStateGroup>
+
+            </VisualStateGroupList>
+
+        </Setter>
+
+    </Style>
+
+
+    <!-- PROGRESS BAR -->
+
+    <Style TargetType="ProgressBar">
+
+        <Setter Property="ProgressColor"
+                Value="{StaticResource BattleOrange}" />
+
+        <Setter Property="BackgroundColor"
+                Value="#BADDED" />
+
+        <Setter Property="VisualStateManager.VisualStateGroups">
+
+            <VisualStateGroupList>
+
+                <VisualStateGroup x:Name="CommonStates">
+
+                    <VisualState x:Name="Normal" />
+
+                    <VisualState x:Name="Disabled">
+                        <VisualState.Setters>
+
+                            <Setter Property="ProgressColor"
+                                    Value="#94B6C8" />
+
+                        </VisualState.Setters>
+                    </VisualState>
+
+                </VisualStateGroup>
+
+            </VisualStateGroupList>
+
+        </Setter>
+
+    </Style>
+
+
+    <!-- RADIO BUTTON -->
+
+    <Style TargetType="RadioButton">
+
+        <Setter Property="BackgroundColor"
+                Value="Transparent" />
+
+        <Setter Property="TextColor"
+                Value="{StaticResource BattleNavy}" />
+
+        <Setter Property="FontFamily"
+                Value="OpenSansRegular" />
+
+        <Setter Property="FontSize"
+                Value="14" />
+
+        <Setter Property="MinimumHeightRequest"
+                Value="44" />
+
+        <Setter Property="MinimumWidthRequest"
+                Value="44" />
+
+        <Setter Property="VisualStateManager.VisualStateGroups">
+
+            <VisualStateGroupList>
+
+                <VisualStateGroup x:Name="CommonStates">
+
+                    <VisualState x:Name="Normal" />
+
+                    <VisualState x:Name="Disabled">
+                        <VisualState.Setters>
+
+                            <Setter Property="TextColor"
+                                    Value="#8BA6B6" />
+
+                        </VisualState.Setters>
+                    </VisualState>
+
+                </VisualStateGroup>
+
+            </VisualStateGroupList>
+
+        </Setter>
+
+    </Style>
+
+
+    <!-- REFRESH VIEW -->
+
+    <Style TargetType="RefreshView">
+
+        <Setter Property="RefreshColor"
+                Value="{StaticResource BattleOcean}" />
+
+    </Style>
+
+
+    <!-- SEARCH BAR -->
+
+    <Style TargetType="SearchBar">
+
+        <Setter Property="TextColor"
+                Value="{StaticResource BattleNavy}" />
+
+        <Setter Property="PlaceholderColor"
+                Value="#668CA2" />
+
+        <Setter Property="CancelButtonColor"
+                Value="{StaticResource BattleOcean}" />
+
+        <Setter Property="BackgroundColor"
+                Value="Transparent" />
+
+        <Setter Property="FontFamily"
+                Value="OpenSansRegular" />
+
+        <Setter Property="FontSize"
+                Value="14" />
+
+        <Setter Property="MinimumHeightRequest"
+                Value="44" />
+
+        <Setter Property="MinimumWidthRequest"
+                Value="44" />
+
+        <Setter Property="VisualStateManager.VisualStateGroups">
+
+            <VisualStateGroupList>
+
+                <VisualStateGroup x:Name="CommonStates">
+
+                    <VisualState x:Name="Normal" />
+
+                    <VisualState x:Name="Disabled">
+                        <VisualState.Setters>
+
+                            <Setter Property="TextColor"
+                                    Value="#8BA6B6" />
+
+                            <Setter Property="PlaceholderColor"
+                                    Value="#8BA6B6" />
+
+                        </VisualState.Setters>
+                    </VisualState>
+
+                </VisualStateGroup>
+
+            </VisualStateGroupList>
+
+        </Setter>
+
+    </Style>
+
+
+    <!-- SEARCH HANDLER -->
+
+    <Style TargetType="SearchHandler">
+
+        <Setter Property="TextColor"
+                Value="{StaticResource BattleNavy}" />
+
+        <Setter Property="PlaceholderColor"
+                Value="#668CA2" />
+
+        <Setter Property="BackgroundColor"
+                Value="Transparent" />
+
+        <Setter Property="FontFamily"
+                Value="OpenSansRegular" />
+
+        <Setter Property="FontSize"
+                Value="14" />
+
+        <Setter Property="VisualStateManager.VisualStateGroups">
+
+            <VisualStateGroupList>
+
+                <VisualStateGroup x:Name="CommonStates">
+
+                    <VisualState x:Name="Normal" />
+
+                    <VisualState x:Name="Disabled">
+                        <VisualState.Setters>
+
+                            <Setter Property="TextColor"
+                                    Value="#8BA6B6" />
+
+                            <Setter Property="PlaceholderColor"
+                                    Value="#8BA6B6" />
+
+                        </VisualState.Setters>
+                    </VisualState>
+
+                </VisualStateGroup>
+
+            </VisualStateGroupList>
+
+        </Setter>
+
+    </Style>
+
+
+    <!-- SHADOW -->
+
+    <Style TargetType="Shadow">
+
+        <Setter Property="Radius"
+                Value="10" />
+
+        <Setter Property="Opacity"
+                Value="0.25" />
+
+        <Setter Property="Brush"
+                Value="#104F79" />
+
+        <Setter Property="Offset"
+                Value="3,5" />
+
+    </Style>
+
+
+    <!-- SLIDER -->
+
+    <Style TargetType="Slider">
+
+        <Setter Property="MinimumTrackColor"
+                Value="{StaticResource BattleOrange}" />
+
+        <Setter Property="MaximumTrackColor"
+                Value="#B5D8E9" />
+
+        <Setter Property="ThumbColor"
+                Value="{StaticResource BattleOrange}" />
+
+        <Setter Property="VisualStateManager.VisualStateGroups">
+
+            <VisualStateGroupList>
+
+                <VisualStateGroup x:Name="CommonStates">
+
+                    <VisualState x:Name="Normal" />
+
+                    <VisualState x:Name="Disabled">
+                        <VisualState.Setters>
+
+                            <Setter Property="MinimumTrackColor"
+                                    Value="#9ABACA" />
+
+                            <Setter Property="MaximumTrackColor"
+                                    Value="#B7CEDB" />
+
+                            <Setter Property="ThumbColor"
+                                    Value="#9ABACA" />
+
+                        </VisualState.Setters>
+                    </VisualState>
+
+                </VisualStateGroup>
+
+            </VisualStateGroupList>
+
+        </Setter>
+
+    </Style>
+
+
+    <!-- SWIPE ITEM -->
+
+    <Style TargetType="SwipeItem">
+
+        <Setter Property="BackgroundColor"
+                Value="{StaticResource BattleOcean}" />
+
+    </Style>
+
+
+    <!-- SWITCH -->
+
+    <Style TargetType="Switch">
+
+        <Setter Property="OnColor"
+                Value="{StaticResource BattleOcean}" />
+
+        <Setter Property="ThumbColor"
+                Value="White" />
+
+        <Setter Property="VisualStateManager.VisualStateGroups">
+
+            <VisualStateGroupList>
+
+                <VisualStateGroup x:Name="CommonStates">
+
+                    <VisualState x:Name="Normal" />
+
+                    <VisualState x:Name="Disabled">
+                        <VisualState.Setters>
+
+                            <Setter Property="OnColor"
+                                    Value="#A1C3D5" />
+
+                            <Setter Property="ThumbColor"
+                                    Value="#C7D7DF" />
+
+                        </VisualState.Setters>
+                    </VisualState>
+
+                    <VisualState x:Name="On">
+                        <VisualState.Setters>
+
+                            <Setter Property="OnColor"
+                                    Value="{StaticResource BattleOcean}" />
+
+                            <Setter Property="ThumbColor"
+                                    Value="White" />
+
+                        </VisualState.Setters>
+                    </VisualState>
+
+                    <VisualState x:Name="Off">
+                        <VisualState.Setters>
+
+                            <Setter Property="ThumbColor"
+                                    Value="#D5E9F3" />
+
+                        </VisualState.Setters>
+                    </VisualState>
+
+                </VisualStateGroup>
+
+            </VisualStateGroupList>
+
+        </Setter>
+
+    </Style>
+
+
+    <!-- TIME PICKER -->
+
+    <Style TargetType="TimePicker">
+
+        <Setter Property="TextColor"
+                Value="{StaticResource BattleNavy}" />
+
+        <Setter Property="BackgroundColor"
+                Value="Transparent" />
+
+        <Setter Property="FontFamily"
+                Value="OpenSansRegular" />
+
+        <Setter Property="FontSize"
+                Value="14" />
+
+        <Setter Property="MinimumHeightRequest"
+                Value="44" />
+
+        <Setter Property="MinimumWidthRequest"
+                Value="44" />
+
+        <Setter Property="VisualStateManager.VisualStateGroups">
+
+            <VisualStateGroupList>
+
+                <VisualStateGroup x:Name="CommonStates">
+
+                    <VisualState x:Name="Normal" />
+
+                    <VisualState x:Name="Disabled">
+                        <VisualState.Setters>
+
+                            <Setter Property="TextColor"
+                                    Value="#8BA6B6" />
+
+                        </VisualState.Setters>
+                    </VisualState>
+
+                </VisualStateGroup>
+
+            </VisualStateGroupList>
+
+        </Setter>
+
+    </Style>
+
+
+    <!-- PAGE -->
+
+    <Style
+        TargetType="Page"
+        ApplyToDerivedTypes="True">
+
+        <Setter Property="Padding"
+                Value="0" />
+
+        <Setter Property="BackgroundColor"
+                Value="{StaticResource BattleSky}" />
+
+    </Style>
+
+
+    <!-- SHELL / TAB NAVIGATION -->
+
+    <Style
+        TargetType="Shell"
+        ApplyToDerivedTypes="True">
+
+        <Setter Property="Shell.BackgroundColor"
+                Value="{StaticResource BattleSky}" />
+
+        <Setter Property="Shell.ForegroundColor"
+                Value="{StaticResource BattleNavy}" />
+
+        <Setter Property="Shell.TitleColor"
+                Value="{StaticResource BattleNavy}" />
+
+        <Setter Property="Shell.DisabledColor"
+                Value="#9BBACB" />
+
+        <Setter Property="Shell.UnselectedColor"
+                Value="{StaticResource BattleSecondaryText}" />
+
+        <Setter Property="Shell.NavBarHasShadow"
+                Value="False" />
+
+        <Setter Property="Shell.TabBarBackgroundColor"
+                Value="{StaticResource BattleCard}" />
+
+        <Setter Property="Shell.TabBarForegroundColor"
+                Value="{StaticResource BattleOrange}" />
+
+        <Setter Property="Shell.TabBarTitleColor"
+                Value="#C77400" />
+
+        <Setter Property="Shell.TabBarUnselectedColor"
+                Value="{StaticResource BattleSecondaryText}" />
+
+    </Style>
+
+
+    <!-- NAVIGATION PAGE -->
+
+    <Style TargetType="NavigationPage">
+
+        <Setter Property="BarBackgroundColor"
+                Value="{StaticResource BattleSky}" />
+
+        <Setter Property="BarTextColor"
+                Value="{StaticResource BattleNavy}" />
+
+        <Setter Property="IconColor"
+                Value="{StaticResource BattleOcean}" />
+
+    </Style>
+
+
+    <!-- TABBED PAGE -->
+
+    <Style TargetType="TabbedPage">
+
+        <Setter Property="BarBackgroundColor"
+                Value="{StaticResource BattleCard}" />
+
+        <Setter Property="BarTextColor"
+                Value="{StaticResource BattleOrange}" />
+
+        <Setter Property="UnselectedTabColor"
+                Value="{StaticResource BattleSecondaryText}" />
+
+        <Setter Property="SelectedTabColor"
+                Value="{StaticResource BattleOrange}" />
+
+    </Style>
+
+
+    <!-- SYNCFUSION SHIMMER -->
+
+    <Style TargetType="shimmer:SfShimmer">
+
+        <Setter Property="Fill"
+                Value="{StaticResource BattleCard}" />
+
+        <Setter Property="WaveColor"
+                Value="{StaticResource BattleSky}" />
+
+    </Style>
+
+
+    <!-- BATTLEGRID REUSABLE CARD STYLES -->
+
+    <Style
+        x:Key="OceanPanelStyle"
+        TargetType="Border">
+
+        <Setter Property="Background">
+            <SolidColorBrush Color="#104F79" />
+        </Setter>
+
+        <Setter Property="Stroke"
+                Value="#287DA6" />
+
+        <Setter Property="StrokeThickness"
+                Value="2" />
+
+        <Setter Property="Padding"
+                Value="18" />
+
+        <Setter Property="StrokeShape"
+                Value="RoundRectangle 16" />
+
+    </Style>
+
+
+    <Style
+        x:Key="LightPanelStyle"
+        TargetType="Border">
+
+        <Setter Property="Background">
+            <SolidColorBrush Color="#DDF3FC" />
+        </Setter>
+
+        <Setter Property="Stroke"
+                Value="#4B9EC3" />
+
+        <Setter Property="StrokeThickness"
+                Value="1" />
+
+        <Setter Property="Padding"
+                Value="16" />
+
+        <Setter Property="StrokeShape"
+                Value="RoundRectangle 12" />
+
+    </Style>
+
+
+    <Style
+        x:Key="OrangePanelStyle"
+        TargetType="Border">
+
+        <Setter Property="Background">
+            <SolidColorBrush Color="#FFA62B" />
+        </Setter>
+
+        <Setter Property="Stroke"
+                Value="#D98816" />
+
+        <Setter Property="StrokeThickness"
+                Value="1" />
+
+        <Setter Property="Padding"
+                Value="14" />
+
+        <Setter Property="StrokeShape"
+                Value="RoundRectangle 10" />
+
+    </Style>
+
+
+    <!-- LABEL STYLES FOR GAME PANELS -->
+
+    <Style
+        x:Key="OceanTitleStyle"
+        TargetType="Label">
+
+        <Setter Property="TextColor"
+                Value="White" />
+
+        <Setter Property="FontSize"
+                Value="22" />
+
+        <Setter Property="FontAttributes"
+                Value="Bold" />
+
+        <Setter Property="HorizontalTextAlignment"
+                Value="Center" />
+
+    </Style>
+
+
+    <Style
+        x:Key="OceanDescriptionStyle"
+        TargetType="Label">
+
+        <Setter Property="TextColor"
+                Value="#CAEAF8" />
+
+        <Setter Property="FontSize"
+                Value="14" />
+
+        <Setter Property="HorizontalTextAlignment"
+                Value="Center" />
+
+    </Style>
+
+
+    <Style
+        x:Key="GameHeadingStyle"
+        TargetType="Label">
+
+        <Setter Property="TextColor"
+                Value="{StaticResource BattleNavy}" />
+
+        <Setter Property="FontSize"
+                Value="26" />
+
+        <Setter Property="FontAttributes"
+                Value="Bold" />
+
+    </Style>
+
+</ResourceDictionary>

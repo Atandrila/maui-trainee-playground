@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:BattleGrid.ViewModels"
+             x:Class="BattleGrid.Views.DashboardView"
+             x:DataType="vm:DashboardViewModel"
+             Title="Dashboard" BackgroundColor="#79C9EB">
+    <ScrollView>
+        <VerticalStackLayout Padding="18,18,18,28" Spacing="14">
+            <Label Text="NAVAL COMMAND / INTELLIGENCE" FontSize="10" FontAttributes="Bold" TextColor="#1C6587"/>
+            <Label Text="COMBAT DASHBOARD" FontSize="27" FontAttributes="Bold" TextColor="#07365A"/>
+            <Border Style="{StaticResource OceanPanelStyle}" Padding="18">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="TACTICAL SUMMARY" TextColor="#FFBC58" FontSize="13" FontAttributes="Bold"/>
+                    <Label Text="{Binding CaptainName}" TextColor="White" FontSize="23" FontAttributes="Bold"/>
+                    <Label Text="{Binding LevelText}" TextColor="#BCEEFF" FontSize="13" FontAttributes="Bold"/>
+                    <BoxView HeightRequest="1" Color="#387FA3"/>
+                    <Label Text="{Binding MissionStatus}" TextColor="#CAEAF8" FontSize="13" LineBreakMode="WordWrap"/>
+                </VerticalStackLayout>
+            </Border>
+            <Label Text="BATTLE PERFORMANCE" TextColor="#07365A" FontAttributes="Bold" FontSize="15"/>
+            <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto" ColumnSpacing="10" RowSpacing="10">
+                <Border Grid.Row="0" Grid.Column="0" Style="{StaticResource LightPanelStyle}" Padding="12">
+                    <VerticalStackLayout Spacing="5"><Label Text="MISSIONS" FontSize="10" FontAttributes="Bold" TextColor="#386989"/><Label Text="{Binding Battles}" FontSize="28" FontAttributes="Bold" TextColor="#07365A"/></VerticalStackLayout>
+                </Border>
+                <Border Grid.Row="0" Grid.Column="1" Style="{StaticResource LightPanelStyle}" Padding="12">
+                    <VerticalStackLayout Spacing="5"><Label Text="VICTORIES" FontSize="10" FontAttributes="Bold" TextColor="#386989"/><Label Text="{Binding Wins}" FontSize="28" FontAttributes="Bold" TextColor="#07365A"/></VerticalStackLayout>
+                </Border>
+                <Border Grid.Row="1" Grid.Column="0" Style="{StaticResource LightPanelStyle}" Padding="12">
+                    <VerticalStackLayout Spacing="5"><Label Text="ACCURACY" FontSize="10" FontAttributes="Bold" TextColor="#386989"/><Label Text="{Binding AccuracyText}" FontSize="25" FontAttributes="Bold" TextColor="#07365A"/></VerticalStackLayout>
+                </Border>
+                <Border Grid.Row="1" Grid.Column="1" Style="{StaticResource LightPanelStyle}" Padding="12">
+                    <VerticalStackLayout Spacing="5"><Label Text="WIN RATE" FontSize="10" FontAttributes="Bold" TextColor="#386989"/><Label Text="{Binding WinRateText}" FontSize="25" FontAttributes="Bold" TextColor="#07365A"/></VerticalStackLayout>
+                </Border>
+            </Grid>
+            <Border Style="{StaticResource OceanPanelStyle}" Padding="17">
+                <VerticalStackLayout Spacing="14">
+                    <Label Text="FIRE CONTROL METRICS" TextColor="#FFBC58" FontSize="15" FontAttributes="Bold"/>
+                    <Grid ColumnDefinitions="*,Auto"><Label Text="TARGET ACCURACY" TextColor="#CAEAF8" FontSize="11"/><Label Grid.Column="1" Text="{Binding AccuracyText}" TextColor="White" FontSize="13" FontAttributes="Bold"/></Grid>
+                    <ProgressBar Progress="{Binding AccuracyRatio}" ProgressColor="#FFA62B" BackgroundColor="#397D9D" HeightRequest="9"/>
+                    <Grid ColumnDefinitions="*,Auto"><Label Text="MISSION WIN RATE" TextColor="#CAEAF8" FontSize="11"/><Label Grid.Column="1" Text="{Binding WinRateText}" TextColor="White" FontSize="13" FontAttributes="Bold"/></Grid>
+                    <ProgressBar Progress="{Binding WinRatio}" ProgressColor="#6DDBF4" BackgroundColor="#397D9D" HeightRequest="9"/>
+                    <BoxView HeightRequest="1" Color="#387FA3"/>
+                    <Grid ColumnDefinitions="*,Auto"><Label Text="SHOTS FIRED" TextColor="#CAEAF8"/><Label Grid.Column="1" Text="{Binding Shots}" TextColor="White" FontAttributes="Bold"/></Grid>
+                    <Grid ColumnDefinitions="*,Auto"><Label Text="SUCCESSFUL HITS" TextColor="#CAEAF8"/><Label Grid.Column="1" Text="{Binding Hits}" TextColor="White" FontAttributes="Bold"/></Grid>
+                    <Grid ColumnDefinitions="*,Auto"><Label Text="MISSES" TextColor="#CAEAF8"/><Label Grid.Column="1" Text="{Binding Misses}" TextColor="White" FontAttributes="Bold"/></Grid>
+                    <Grid ColumnDefinitions="*,Auto"><Label Text="SHIPS DESTROYED" TextColor="#CAEAF8"/><Label Grid.Column="1" Text="{Binding ShipsDestroyed}" TextColor="White" FontAttributes="Bold"/></Grid>
+                </VerticalStackLayout>
+            </Border>
+            <Label Text="CAREER HIGHLIGHTS" TextColor="#07365A" FontAttributes="Bold" FontSize="15"/>
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                <Border Grid.Column="0" Style="{StaticResource LightPanelStyle}" Padding="12"><VerticalStackLayout Spacing="4"><Label Text="BEST SCORE" FontSize="10" TextColor="#386989"/><Label Text="{Binding BestScore}" FontSize="24" FontAttributes="Bold" TextColor="#07365A"/></VerticalStackLayout></Border>
+                <Border Grid.Column="1" Style="{StaticResource LightPanelStyle}" Padding="12"><VerticalStackLayout Spacing="4"><Label Text="BEST STREAK" FontSize="10" TextColor="#386989"/><Label Text="{Binding BestStreak}" FontSize="24" FontAttributes="Bold" TextColor="#07365A"/></VerticalStackLayout></Border>
+            </Grid>
+            <Label Text="Statistics update from saved battle results; no sample scores are generated." FontSize="11" TextColor="#386989" HorizontalTextAlignment="Center"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

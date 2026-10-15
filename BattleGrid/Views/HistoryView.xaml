@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="BattleGrid.Views.HistoryView" Title="History" BackgroundColor="#79C9EB">
+ <ScrollView><VerticalStackLayout Padding="18,19,18,24" Spacing="14">
+ <Label Text="NAVAL COMMAND / HISTORY" FontSize="10" FontAttributes="Bold" TextColor="#1C6587" />
+ <Label Text="MISSION ARCHIVE" FontSize="27" FontAttributes="Bold" TextColor="#07365A" />
+ <Border Style="{StaticResource OceanPanelStyle}" Padding="18"><VerticalStackLayout Spacing="11">
+ <Label Text="BATTLE LOG" TextColor="#FFBC58" FontSize="13" FontAttributes="Bold" />
+ <Label Text="NO MISSIONS RECORDED" TextColor="White" FontSize="21" FontAttributes="Bold" />
+ <BoxView HeightRequest="2" Color="#387FA3" />
+ <Label Text="Your completed battles will appear here." TextColor="#CAEAF8" FontSize="13" />
+ </VerticalStackLayout></Border>
+ <Label Text="COMMANDER DATA" TextColor="#07365A" FontSize="14" FontAttributes="Bold" />
+ <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto" RowSpacing="10" ColumnSpacing="10"><Border Grid.Row="0" Grid.Column="0" Style="{StaticResource LightPanelStyle}" Padding="13"><VerticalStackLayout Spacing="5"><Label Text="TOTAL MISSIONS" FontSize="10" FontAttributes="Bold" TextColor="#326786" /><Label Text="—" FontSize="23" FontAttributes="Bold" TextColor="#07365A" /></VerticalStackLayout></Border>
+<Border Grid.Row="0" Grid.Column="1" Style="{StaticResource LightPanelStyle}" Padding="13"><VerticalStackLayout Spacing="5"><Label Text="VICTORIES" FontSize="10" FontAttributes="Bold" TextColor="#326786" /><Label Text="—" FontSize="23" FontAttributes="Bold" TextColor="#07365A" /></VerticalStackLayout></Border>
+<Border Grid.Row="1" Grid.Column="0" Style="{StaticResource LightPanelStyle}" Padding="13"><VerticalStackLayout Spacing="5"><Label Text="DEFEATS" FontSize="10" FontAttributes="Bold" TextColor="#326786" /><Label Text="—" FontSize="23" FontAttributes="Bold" TextColor="#07365A" /></VerticalStackLayout></Border>
+<Border Grid.Row="1" Grid.Column="1" Style="{StaticResource LightPanelStyle}" Padding="13"><VerticalStackLayout Spacing="5"><Label Text="BEST SCORE" FontSize="10" FontAttributes="Bold" TextColor="#326786" /><Label Text="—" FontSize="23" FontAttributes="Bold" TextColor="#07365A" /></VerticalStackLayout></Border></Grid>
+ <Border Style="{StaticResource LightPanelStyle}" Padding="15"><VerticalStackLayout Spacing="5">
+ <Label Text="MISSION STATUS" TextColor="#07365A" FontAttributes="Bold" FontSize="13" />
+ <Label Text="Awaiting your first deployment." FontSize="12" TextColor="#326786" />
+ </VerticalStackLayout></Border>
+ </VerticalStackLayout></ScrollView>
+</ContentPage>

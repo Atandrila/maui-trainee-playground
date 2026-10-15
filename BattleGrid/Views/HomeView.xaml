@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:BattleGrid.Controls"
+             x:Class="BattleGrid.Views.HomeView" Title="Home"
+             BackgroundColor="#79C9EB">
+    <ScrollView BackgroundColor="#79C9EB">
+        <VerticalStackLayout Padding="18,14,18,24" Spacing="12">
+            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                <VerticalStackLayout Spacing="1">
+                    <Label Text="NAVAL COMMAND" FontSize="10" FontAttributes="Bold" TextColor="#185B7C" />
+                    <Label Text="BATTLEGRID" FontSize="33" FontAttributes="Bold" TextColor="#07365A" />
+                    <Label Text="TACTICS  •  PRECISION  •  VICTORY" FontSize="10" FontAttributes="Bold" TextColor="#287394" />
+                </VerticalStackLayout>
+                <Border Grid.Column="1" Style="{StaticResource LightPanelStyle}" Padding="9" VerticalOptions="Center" Stroke="#FFAC38" StrokeThickness="2">
+                    <VerticalStackLayout Spacing="0" HorizontalOptions="Center">
+                        <Label Text="BG" FontSize="23" FontAttributes="Bold" TextColor="#104F79" HorizontalOptions="Center" />
+                        <Label Text="FLEET" FontSize="9" FontAttributes="Bold" TextColor="#49748C" HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </Border>
+            </Grid>
+
+            <Border Style="{StaticResource OceanPanelStyle}" Padding="13">
+                <VerticalStackLayout Spacing="10">
+                    <Grid ColumnDefinitions="*,Auto">
+                        <Label Text="MISSION CONTROL / SECTOR 01" FontSize="11" FontAttributes="Bold" TextColor="#B9EBFA" VerticalOptions="Center" />
+                        <Border Grid.Column="1" Style="{x:Null}" Background="#237DA3" StrokeThickness="0" StrokeShape="RoundRectangle 9" Padding="8,4">
+                            <Label Text="RADAR ONLINE" TextColor="White" FontSize="9" FontAttributes="Bold" />
+                        </Border>
+                    </Grid>
+                    <Border Style="{x:Null}" Background="#0A527A" Stroke="#55B7D8" StrokeThickness="1" StrokeShape="RoundRectangle 12" Padding="5">
+                        <GraphicsView x:Name="RadarPreview" HeightRequest="215" BackgroundColor="#0A527A" />
+                    </Border>
+                    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="6">
+                        <VerticalStackLayout Spacing="2">
+                            <Label Text="READY TO DEPLOY?" TextColor="White" FontAttributes="Bold" FontSize="20" />
+                            <Label Text="Five ships. One ocean. Your strategy." TextColor="#C6EBF8" FontSize="12" />
+                        </VerticalStackLayout>
+                        <Label Grid.Column="1" Text="10 × 10" TextColor="#FFBC58" FontAttributes="Bold" FontSize="12" VerticalOptions="Center" />
+                    </Grid>
+                    <Button Text="DEPLOY FLEET  →" Clicked="OnDeployClicked" HeightRequest="48" BackgroundColor="#FFA62B" TextColor="#092C49" FontSize="16" FontAttributes="Bold" CornerRadius="10" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                <Border Style="{StaticResource LightPanelStyle}" Padding="12">
+                    <VerticalStackLayout Spacing="3">
+                        <Label Text="05" FontSize="24" FontAttributes="Bold" TextColor="#104F79" />
+                        <Label Text="SHIPS IN YOUR FLEET" FontSize="10" FontAttributes="Bold" TextColor="#356F8A" />
+                    </VerticalStackLayout>
+                </Border>
+                <Border Grid.Column="1" Style="{StaticResource LightPanelStyle}" Padding="12">
+                    <VerticalStackLayout Spacing="3">
+                        <Label Text="03" FontSize="24" FontAttributes="Bold" TextColor="#104F79" />
+                        <Label Text="AI DIFFICULTY MODES" FontSize="10" FontAttributes="Bold" TextColor="#356F8A" />
+                    </VerticalStackLayout>
+                </Border>
+            </Grid>
+            <Border Style="{StaticResource LightPanelStyle}" Padding="12">
+                <VerticalStackLayout Spacing="4">
+                    <Label Text="CAPTAIN'S ORDERS" FontSize="13" FontAttributes="Bold" TextColor="#07365A" />
+                    <Label Text="Position your warships on a 10 × 10 map. Search the enemy sea zone and sink their fleet before they sink yours." TextColor="#2D5E79" FontSize="12" />
+                </VerticalStackLayout>
+            </Border>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+ xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+ xmlns:views="clr-namespace:BattleGrid.Views"
+ x:Class="BattleGrid.AppShell" Shell.FlyoutBehavior="Disabled"
+ Shell.BackgroundColor="#79C9EB" Shell.ForegroundColor="#07365A"
+ Shell.TitleColor="#07365A" Shell.TabBarBackgroundColor="#E0F4FE"
+ Shell.TabBarForegroundColor="#E88914" Shell.TabBarTitleColor="#C9770B"
+ Shell.TabBarUnselectedColor="#346B8A">
+ <TabBar Route="main">
+  <ShellContent Title="Home" Icon="nav_home.png" Route="home" ContentTemplate="{DataTemplate views:HomeView}" />
+  <ShellContent Title="Dashboard" Icon="nav_stats.png" Route="dashboard" ContentTemplate="{DataTemplate views:DashboardView}" />
+  <ShellContent Title="Ranks" Icon="nav_ranks.png" Route="ranks" ContentTemplate="{DataTemplate views:LeaderboardView}" />
+  <ShellContent Title="History" Icon="nav_history.png" Route="history" ContentTemplate="{DataTemplate views:HistoryView}" />
+  <ShellContent Title="Profile" Icon="nav_profile.png" Route="profile" ContentTemplate="{DataTemplate views:ProfileView}" />
+ </TabBar>
+</Shell>

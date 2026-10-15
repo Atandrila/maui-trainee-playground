@@ -1,0 +1,23 @@
+# Visual Studio
+.vs/
+.vscode/
+*.user
+*.suo
+
+# .NET MAUI build files
+**/bin/
+**/obj/
+
+# Build output
+Debug/
+Release/
+artifacts/
+
+# Temporary files
+*.tmp
+*.log
+*.cache
+
+# Operating system
+Thumbs.db
+.DS_Store

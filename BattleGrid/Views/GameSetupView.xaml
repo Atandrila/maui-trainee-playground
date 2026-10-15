@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+ xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+ x:Class="BattleGrid.Views.GameSetupView" Title="Deploy Fleet" BackgroundColor="#79C9EB">
+ <ScrollView>
+  <VerticalStackLayout Padding="20,22" Spacing="16">
+   <Label Text="FLEET DEPLOYMENT" FontSize="27" FontAttributes="Bold" TextColor="#07365A" />
+   <Label Text="Prepare your formation" TextColor="#286586" FontSize="14" />
+   <Border Style="{StaticResource OceanPanelStyle}">
+    <VerticalStackLayout Spacing="13">
+     <Label Text="MISSION PREPARATION" TextColor="#FFBC58" FontAttributes="Bold" FontSize="13" />
+     <Label Text="THE BATTLE STARTS HERE" TextColor="White" FontAttributes="Bold" FontSize="22" />
+     <Label Text="The next game-development milestone will add an interactive 10 × 10 placement board, ship rotation and random deployment." TextColor="#D7F1FA" FontSize="14" />
+     <BoxView HeightRequest="2" Color="#3C8FB1" />
+     <Label Text="YOUR FLEET" TextColor="#FFBC58" FontAttributes="Bold" />
+     <Label Text="CARRIER     /     5 CELLS" TextColor="White" />
+     <Label Text="BATTLESHIP  /     4 CELLS" TextColor="White" />
+     <Label Text="CRUISER      /     3 CELLS" TextColor="White" />
+     <Label Text="SUBMARINE /     3 CELLS" TextColor="White" />
+     <Label Text="DESTROYER /     2 CELLS" TextColor="White" />
+    </VerticalStackLayout>
+   </Border>
+   <Button Text="BACK TO COMMAND" Clicked="OnBackClicked" BackgroundColor="#FFA62B" TextColor="#092C49" />
+  </VerticalStackLayout>
+ </ScrollView>
+</ContentPage>
