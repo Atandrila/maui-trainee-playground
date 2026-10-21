@@ -3,7 +3,6 @@ using BattleGrid.Models;
 
 namespace BattleGrid.Services;
 
-// Shared local persistence used by both MTP-11 and MTP-12.
 public sealed class PlayerDataService
 {
     private readonly string path = Path.Combine(FileSystem.AppDataDirectory, "battlegrid_player.json");
@@ -43,9 +42,6 @@ public sealed class PlayerDataService
         }
         finally { gate.Release(); }
     }
-
-    // Call this from the completed battle logic in a future task.
-    // The UI never invents sample wins, shots or scores.
     public async Task RecordBattleAsync(BattleRecord battle)
     {
         if (battle.Hits < 0 || battle.Misses < 0 || battle.ShipsDestroyed < 0 || battle.Score < 0)
