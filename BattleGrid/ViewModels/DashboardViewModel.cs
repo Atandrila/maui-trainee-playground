@@ -1,5 +1,5 @@
 using BattleGrid.Services;
-using CommunityToolkit.Mvvm.ComponentModel;
+using BattleGrid.ViewModels.Base;
 
 namespace BattleGrid.ViewModels;
 

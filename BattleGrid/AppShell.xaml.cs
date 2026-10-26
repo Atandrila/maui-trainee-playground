@@ -1,7 +1,5 @@
 
 using BattleGrid.Views;
-using CommunityToolkit.Maui.Alerts;
-using CommunityToolkit.Maui.Core;
 
 namespace BattleGrid;
 
@@ -15,10 +13,7 @@ public partial class AppShell : Shell
 
     public static async Task DisplayToastAsync(string message)
     {
-        var toast = Toast.Make(
-            message,
-            ToastDuration.Short);
-
-        await toast.Show();
+        // Built-in MAUI dialog, with no third-party toast dependency.
+        await Shell.Current.DisplayAlert("BattleGrid", message, "OK");
     }
 }
