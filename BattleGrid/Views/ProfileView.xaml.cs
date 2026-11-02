@@ -2,15 +2,15 @@ using BattleGrid.ViewModels;
 namespace BattleGrid.Views;
 public partial class ProfileView : ContentPage
 {
-    private readonly ProfileViewModel viewModel;
+    private readonly ProfileViewModel _viewModel;
     public ProfileView(ProfileViewModel viewModel)
     {
         InitializeComponent();
-        BindingContext = this.viewModel = viewModel;
+        BindingContext = _viewModel = viewModel;
     }
     protected override async void OnAppearing()
     {
         base.OnAppearing();
-        await viewModel.LoadAsync();
+        await _viewModel.LoadAsync();
     }
 }

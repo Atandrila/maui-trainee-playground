@@ -5,26 +5,26 @@ namespace BattleGrid.ViewModels;
 
 public sealed class DashboardViewModel : ObservableObject
 {
-    private readonly PlayerDataService data;
-    private string captainName = "Captain", missionStatus = "Complete your first battle to populate statistics.";
-    private int battles, wins, losses, shots, hits, misses, shipsDestroyed, bestScore, bestStreak, totalXp;
-    private double accuracyRatio, winRatio;
-    public DashboardViewModel(PlayerDataService data) => this.data = data;
+    private readonly PlayerDataService _playerDataService;
+    private string _captainName = "Captain", _missionStatus = "Complete your first battle to populate statistics.";
+    private int _battles, _wins, _losses, _shots, _hits, _misses, _shipsDestroyed, _bestScore, _bestStreak, _totalXp;
+    private double _accuracyRatio, _winRatio;
+    public DashboardViewModel(PlayerDataService playerDataService) => _playerDataService = playerDataService;
 
-    public string CaptainName { get => captainName; private set => SetProperty(ref captainName, value); }
-    public string MissionStatus { get => missionStatus; private set => SetProperty(ref missionStatus, value); }
-    public int Battles { get => battles; private set => SetProperty(ref battles, value); }
-    public int Wins { get => wins; private set => SetProperty(ref wins, value); }
-    public int Losses { get => losses; private set => SetProperty(ref losses, value); }
-    public int Shots { get => shots; private set => SetProperty(ref shots, value); }
-    public int Hits { get => hits; private set => SetProperty(ref hits, value); }
-    public int Misses { get => misses; private set => SetProperty(ref misses, value); }
-    public int ShipsDestroyed { get => shipsDestroyed; private set => SetProperty(ref shipsDestroyed, value); }
-    public int BestScore { get => bestScore; private set => SetProperty(ref bestScore, value); }
-    public int BestStreak { get => bestStreak; private set => SetProperty(ref bestStreak, value); }
-    public int TotalXp { get => totalXp; private set => SetProperty(ref totalXp, value); }
-    public double AccuracyRatio { get => accuracyRatio; private set => SetProperty(ref accuracyRatio, value); }
-    public double WinRatio { get => winRatio; private set => SetProperty(ref winRatio, value); }
+    public string CaptainName { get => _captainName; private set => SetProperty(ref _captainName, value); }
+    public string MissionStatus { get => _missionStatus; private set => SetProperty(ref _missionStatus, value); }
+    public int Battles { get => _battles; private set => SetProperty(ref _battles, value); }
+    public int Wins { get => _wins; private set => SetProperty(ref _wins, value); }
+    public int Losses { get => _losses; private set => SetProperty(ref _losses, value); }
+    public int Shots { get => _shots; private set => SetProperty(ref _shots, value); }
+    public int Hits { get => _hits; private set => SetProperty(ref _hits, value); }
+    public int Misses { get => _misses; private set => SetProperty(ref _misses, value); }
+    public int ShipsDestroyed { get => _shipsDestroyed; private set => SetProperty(ref _shipsDestroyed, value); }
+    public int BestScore { get => _bestScore; private set => SetProperty(ref _bestScore, value); }
+    public int BestStreak { get => _bestStreak; private set => SetProperty(ref _bestStreak, value); }
+    public int TotalXp { get => _totalXp; private set => SetProperty(ref _totalXp, value); }
+    public double AccuracyRatio { get => _accuracyRatio; private set => SetProperty(ref _accuracyRatio, value); }
+    public double WinRatio { get => _winRatio; private set => SetProperty(ref _winRatio, value); }
     public string AccuracyText => $"{AccuracyRatio:P1}";
     public string WinRateText => $"{WinRatio:P1}";
     public string RecordText => $"{Wins} W  /  {Losses} L";
@@ -34,7 +34,7 @@ public sealed class DashboardViewModel : ObservableObject
     {
         try
         {
-            var p = await data.LoadAsync();
+            var p = await _playerDataService.LoadAsync();
             CaptainName = p.CaptainName;
             Wins = p.Wins; Losses = p.Losses;
             Battles = Wins + Losses;
