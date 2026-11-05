@@ -1,84 +1,211 @@
+using BattleGrid.Resources.Localization;
 using BattleGrid.Services;
-using CommunityToolkit.Mvvm.ComponentModel;
+using BattleGrid.ViewModels.Base;
+using System.Collections.ObjectModel;
 using System.Windows.Input;
 
 namespace BattleGrid.ViewModels;
 
 public sealed class ProfileViewModel : ObservableObject
 {
-    private readonly PlayerDataService data;
-    private string captainName = "Captain";
-    private string difficulty = "Medium";
-    private string statusMessage = "Change your captain name or difficulty, then save.";
-    private int level = 1, xp, wins, losses, bestStreak, currentStreak;
-    private string rank = "Recruit", achievements = "No medals unlocked yet.";
-    private double levelProgress;
-    private bool isBusy;
+    private readonly PlayerDataService _playerDataService;
+    private readonly LanguageService _languageService;
+    private string _captainName = GetText("DefaultCaptainName");
+    private string _statusKey = "StatusInitial";
+    private string? _statusDetail;
+    private int _level = 1, _xp, _wins, _losses, _bestStreak, _currentStreak;
+    private string _rankKey = "RankRecruit";
+    private readonly List<string> _achievementKeys = new();
+    private double _levelProgress;
+    private bool _isBusy;
+    private int _selectedLanguageIndex;
+    private int _selectedDifficultyIndex = 1;
+    private bool _updatingOptions;
+    private static readonly string[] _difficultyCodes = { "Easy", "Medium", "Hard" };
 
-    public ProfileViewModel(PlayerDataService data)
+    public ProfileViewModel(PlayerDataService playerDataService, LanguageService languageService)
     {
-        this.data = data;
+        _playerDataService = playerDataService;
+        _languageService = languageService;
+        _selectedLanguageIndex = _languageService.LanguageCode == "fr" ? 1 : 0;
+        RefreshDifficultyLabels();
+        RefreshLanguageLabels();
+        _languageService.LanguageChanged += (_, _) => RefreshLocalizedStrings();
         SaveCommand = new Command(async () => await SaveAsync(), () => !IsBusy);
     }
 
-    public string CaptainName { get => captainName; set => SetProperty(ref captainName, value); }
-    public string Difficulty { get => difficulty; set => SetProperty(ref difficulty, value); }
-    public string StatusMessage { get => statusMessage; private set => SetProperty(ref statusMessage, value); }
-    public int Level { get => level; private set => SetProperty(ref level, value); }
-    public int XP { get => xp; private set => SetProperty(ref xp, value); }
-    public int Wins { get => wins; private set => SetProperty(ref wins, value); }
-    public int Losses { get => losses; private set => SetProperty(ref losses, value); }
-    public int BestStreak { get => bestStreak; private set => SetProperty(ref bestStreak, value); }
-    public int CurrentStreak { get => currentStreak; private set => SetProperty(ref currentStreak, value); }
-    public string Rank { get => rank; private set => SetProperty(ref rank, value); }
-    public string Achievements { get => achievements; private set => SetProperty(ref achievements, value); }
-    public double LevelProgress { get => levelProgress; private set => SetProperty(ref levelProgress, value); }
-    public string LevelProgressText => $"{XP % 500} / 500 XP to next level";
-    public bool IsBusy { get => isBusy; private set { if (SetProperty(ref isBusy, value)) ((Command)SaveCommand).ChangeCanExecute(); } }
-    public IReadOnlyList<string> Difficulties { get; } = new[] { "Easy", "Medium", "Hard" };
+    public string CaptainName { get => _captainName; set => SetProperty(ref _captainName, value); }
+    public int Level { get => _level; private set => SetProperty(ref _level, value); }
+    public int XP { get => _xp; private set { if (SetProperty(ref _xp, value)) OnPropertyChanged(nameof(LevelProgressText)); } }
+    public int Wins { get => _wins; private set => SetProperty(ref _wins, value); }
+    public int Losses { get => _losses; private set => SetProperty(ref _losses, value); }
+    public int BestStreak { get => _bestStreak; private set => SetProperty(ref _bestStreak, value); }
+    public int CurrentStreak { get => _currentStreak; private set => SetProperty(ref _currentStreak, value); }
+    public double LevelProgress { get => _levelProgress; private set => SetProperty(ref _levelProgress, value); }
+    public string Rank => GetText(_rankKey);
+    public string Achievements => _achievementKeys.Count == 0
+        ? GetText("AchievementNone")
+        : string.Join("  •  ", _achievementKeys.Select(GetText));
+    public string LevelProgressText => string.Format(AppResources.Culture,
+        GetText("LevelProgressFormat"), XP % 500);
+    public string StatusMessage => _statusDetail is null
+        ? GetText(_statusKey)
+        : string.Format(AppResources.Culture, GetText(_statusKey), _statusDetail);
+    public bool IsBusy
+    {
+        get => _isBusy;
+        private set
+        {
+            if (SetProperty(ref _isBusy, value))
+                ((Command)SaveCommand).ChangeCanExecute();
+        }
+    }
+
+    public ObservableCollection<string> Languages { get; private set; } = new();
+    public ObservableCollection<string> Difficulties { get; private set; } = new();
+    public int SelectedDifficultyIndex
+    {
+        get => _selectedDifficultyIndex;
+        set
+        {
+            if (_updatingOptions) return;
+            SetProperty(ref _selectedDifficultyIndex, value);
+        }
+    }
+    public int SelectedLanguageIndex
+    {
+        get => _selectedLanguageIndex;
+        set
+        {
+            if (value < 0 || value > 1) return;
+            if (SetProperty(ref _selectedLanguageIndex, value))
+                _languageService.SetLanguage(value == 1 ? "fr" : "en");
+        }
+    }
+
+    private static string GetText(string key) =>
+        AppResources.ResourceManager.GetString(key, AppResources.Culture) ?? key;
+
     public ICommand SaveCommand { get; }
+
+    private void SetStatus(string key, string? detail = null)
+    {
+        _statusKey = key;
+        _statusDetail = detail;
+        OnPropertyChanged(nameof(StatusMessage));
+    }
+
+    private void RefreshDifficultyLabels()
+    {
+        _updatingOptions = true;
+        Difficulties = new ObservableCollection<string>(new[]
+        {
+            GetText("DifficultyEasy"),
+            GetText("DifficultyMedium"),
+            GetText("DifficultyHard")
+        });
+        OnPropertyChanged(nameof(Difficulties));
+        _updatingOptions = false;
+        OnPropertyChanged(nameof(SelectedDifficultyIndex));
+    }
+
+    private void RefreshLanguageLabels()
+    {
+        Languages = new ObservableCollection<string>(new[]
+        {
+            GetText("LanguageEnglish"),
+            GetText("LanguageFrench")
+        });
+        OnPropertyChanged(nameof(Languages));
+        OnPropertyChanged(nameof(SelectedLanguageIndex));
+    }
+
+    private void RefreshLocalizedStrings()
+    {
+        int index = _languageService.LanguageCode == "fr" ? 1 : 0;
+        if (_selectedLanguageIndex != index)
+        {
+            _selectedLanguageIndex = index;
+            OnPropertyChanged(nameof(SelectedLanguageIndex));
+        }
+        RefreshDifficultyLabels();
+        RefreshLanguageLabels();
+        OnPropertyChanged(nameof(Rank));
+        OnPropertyChanged(nameof(Achievements));
+        OnPropertyChanged(nameof(LevelProgressText));
+        OnPropertyChanged(nameof(StatusMessage));
+    }
+
 
     public async Task LoadAsync()
     {
         try
         {
-            var p = await data.LoadAsync();
+            var p = await _playerDataService.LoadAsync();
             CaptainName = p.CaptainName;
-            Difficulty = p.PreferredDifficulty;
+            int difficultyIndex = Array.IndexOf(_difficultyCodes, p.PreferredDifficulty);
+            SelectedDifficultyIndex = difficultyIndex < 0 ? 1 : difficultyIndex;
             XP = p.Xp;
             Level = XP / 500 + 1;
             LevelProgress = (XP % 500) / 500.0;
-            OnPropertyChanged(nameof(LevelProgressText));
-            Rank = Level switch { >= 20 => "Fleet Admiral", >= 12 => "Admiral", >= 7 => "Commander", >= 3 => "Lieutenant", _ => "Recruit" };
-            Wins = p.Wins; Losses = p.Losses;
-            BestStreak = p.BestStreak; CurrentStreak = p.CurrentStreak;
-            var medals = new List<string>();
-            if (p.Wins >= 1) medals.Add("FIRST VICTORY");
-            if (p.Battles.Any(b => b.Hits + b.Misses > 0 && b.Hits * 100.0 / (b.Hits + b.Misses) >= 80)) medals.Add("SHARPSHOOTER (80%+)");
-            if (p.BestStreak >= 3) medals.Add("WIN STREAK (3)");
-            if (p.Wins >= 10) medals.Add("VETERAN (10 WINS)");
-            Achievements = medals.Count == 0 ? "No medals unlocked yet." : string.Join("  •  ", medals);
+            _rankKey = Level switch
+            {
+                >= 20 => "RankFleetAdmiral",
+                >= 12 => "RankAdmiral",
+                >= 7 => "RankCommander",
+                >= 3 => "RankLieutenant",
+                _ => "RankRecruit"
+            };
+            OnPropertyChanged(nameof(Rank));
+            Wins = p.Wins;
+            Losses = p.Losses;
+            BestStreak = p.BestStreak;
+            CurrentStreak = p.CurrentStreak;
+            _achievementKeys.Clear();
+            if (p.Wins >= 1) _achievementKeys.Add("AchievementFirstVictory");
+            if (p.Battles.Any(b => b.Hits + b.Misses > 0 && b.Hits * 100.0 / (b.Hits + b.Misses) >= 80))
+                _achievementKeys.Add("AchievementSharpshooter");
+            if (p.BestStreak >= 3) _achievementKeys.Add("AchievementWinStreak");
+            if (p.Wins >= 10) _achievementKeys.Add("AchievementVeteran");
+            OnPropertyChanged(nameof(Achievements));
         }
-        catch (Exception ex) { StatusMessage = $"Could not load profile: {ex.Message}"; }
+        catch (Exception ex)
+        {
+            SetStatus("StatusLoadError", ex.Message);
+        }
     }
 
     private async Task SaveAsync()
     {
         if (IsBusy) return;
-        var name = CaptainName?.Trim() ?? "";
-        if (name.Length is < 2 or > 24) { StatusMessage = "Captain name must be 2–24 characters."; return; }
-        if (!Difficulties.Contains(Difficulty)) { StatusMessage = "Select a valid difficulty."; return; }
+        var name = CaptainName?.Trim() ?? string.Empty;
+        if (name.Length is < 2 or > 24)
+        {
+            SetStatus("StatusInvalidName");
+            return;
+        }
+        if (SelectedDifficultyIndex < 0 || SelectedDifficultyIndex >= _difficultyCodes.Length)
+        {
+            SetStatus("StatusInvalidDifficulty");
+            return;
+        }
         IsBusy = true;
         try
         {
-            var p = await data.LoadAsync();
+            var p = await _playerDataService.LoadAsync();
             p.CaptainName = name;
-            p.PreferredDifficulty = Difficulty;
-            await data.SaveAsync();
+            p.PreferredDifficulty = _difficultyCodes[SelectedDifficultyIndex];
+            await _playerDataService.SaveAsync();
             CaptainName = name;
-            StatusMessage = "Captain profile saved on this device.";
+            SetStatus("StatusSaved");
         }
-        catch (Exception ex) { StatusMessage = $"Save failed: {ex.Message}"; }
-        finally { IsBusy = false; }
+        catch (Exception ex)
+        {
+            SetStatus("StatusSaveError", ex.Message);
+        }
+        finally
+        {
+            IsBusy = false;
+        }
     }
 }

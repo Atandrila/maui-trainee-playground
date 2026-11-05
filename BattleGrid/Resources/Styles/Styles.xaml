@@ -1,10 +1,10 @@
-﻿<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <?xaml-comp compile="true" ?>
 
 <ResourceDictionary
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:shimmer="clr-namespace:Syncfusion.Maui.Toolkit.Shimmer;assembly=Syncfusion.Maui.Toolkit">
+>
 
     <!-- BATTLEGRID COLOR PALETTE -->
 
@@ -1016,19 +1016,6 @@
 
         <Setter Property="SelectedTabColor"
                 Value="{StaticResource BattleOrange}" />
-
-    </Style>
-
-
-    <!-- SYNCFUSION SHIMMER -->
-
-    <Style TargetType="shimmer:SfShimmer">
-
-        <Setter Property="Fill"
-                Value="{StaticResource BattleCard}" />
-
-        <Setter Property="WaveColor"
-                Value="{StaticResource BattleSky}" />
 
     </Style>
 

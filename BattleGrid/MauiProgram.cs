@@ -1,7 +1,6 @@
-using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
-using Syncfusion.Maui.Toolkit.Hosting;
 using BattleGrid.Services;
+using BattleGrid.Resources.Localization;
 using BattleGrid.ViewModels;
 using BattleGrid.Views;
 
@@ -13,8 +12,6 @@ public static class MauiProgram
     {
         var builder = MauiApp.CreateBuilder();
         builder.UseMauiApp<App>()
-            .UseMauiCommunityToolkit()
-            .ConfigureSyncfusionToolkit()
             .ConfigureFonts(fonts =>
             {
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -26,6 +23,7 @@ public static class MauiProgram
 #endif
 
         builder.Services.AddSingleton<PlayerDataService>();
+        builder.Services.AddSingleton<LanguageService>();
         builder.Services.AddTransient<ProfileViewModel>();
         builder.Services.AddTransient<DashboardViewModel>();
         builder.Services.AddTransient<ProfileView>();

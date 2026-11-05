@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata"><xsd:complexType><xsd:sequence><xsd:element name="value" type="xsd:string" minOccurs="0" /></xsd:sequence><xsd:attribute name="name" use="required" type="xsd:string" /><xsd:attribute name="type" type="xsd:string" /><xsd:attribute name="mimetype" type="xsd:string" /><xsd:attribute ref="xml:space" /></xsd:complexType></xsd:element>
+          <xsd:element name="assembly"><xsd:complexType><xsd:attribute name="alias" type="xsd:string" /><xsd:attribute name="name" type="xsd:string" /></xsd:complexType></xsd:element>
+          <xsd:element name="data"><xsd:complexType><xsd:sequence><xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" /><xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" /></xsd:sequence><xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" /><xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" /><xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" /><xsd:attribute ref="xml:space" /></xsd:complexType></xsd:element>
+          <xsd:element name="resheader"><xsd:complexType><xsd:sequence><xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" /></xsd:sequence><xsd:attribute name="name" type="xsd:string" use="required" /></xsd:complexType></xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms</value>
+  </resheader>
+  <data name="ProfileTitle" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="PersonnelSection" xml:space="preserve">
+    <value>NAVAL COMMAND / PERSONNEL</value>
+  </data>
+  <data name="CaptainDossier" xml:space="preserve">
+    <value>CAPTAIN DOSSIER</value>
+  </data>
+  <data name="EmblemNavy" xml:space="preserve">
+    <value>NAVY</value>
+  </data>
+  <data name="FleetCommander" xml:space="preserve">
+    <value>FLEET COMMANDER</value>
+  </data>
+  <data name="ServiceLevel" xml:space="preserve">
+    <value>SERVICE LEVEL</value>
+  </data>
+  <data name="ServiceRecord" xml:space="preserve">
+    <value>SERVICE RECORD</value>
+  </data>
+  <data name="Victories" xml:space="preserve">
+    <value>VICTORIES</value>
+  </data>
+  <data name="Losses" xml:space="preserve">
+    <value>LOSSES</value>
+  </data>
+  <data name="CurrentStreak" xml:space="preserve">
+    <value>CURRENT STREAK</value>
+  </data>
+  <data name="BestStreak" xml:space="preserve">
+    <value>BEST STREAK</value>
+  </data>
+  <data name="CaptainSettings" xml:space="preserve">
+    <value>CAPTAIN SETTINGS</value>
+  </data>
+  <data name="CaptainNameLabel" xml:space="preserve">
+    <value>CAPTAIN NAME</value>
+  </data>
+  <data name="CaptainNamePlaceholder" xml:space="preserve">
+    <value>Enter captain name</value>
+  </data>
+  <data name="PreferredDifficulty" xml:space="preserve">
+    <value>PREFERRED AI DIFFICULTY</value>
+  </data>
+  <data name="SaveCaptainProfile" xml:space="preserve">
+    <value>SAVE CAPTAIN PROFILE</value>
+  </data>
+  <data name="MedalsAchievements" xml:space="preserve">
+    <value>MEDALS &amp; ACHIEVEMENTS</value>
+  </data>
+  <data name="MedalsHint" xml:space="preserve">
+    <value>Medals are earned from recorded victories, accuracy, and streaks.</value>
+  </data>
+  <data name="LanguageLabel" xml:space="preserve">
+    <value>LANGUAGE / LANGUE</value>
+  </data>
+  <data name="LanguageHint" xml:space="preserve">
+    <value>Changes the profile language immediately and remembers your choice.</value>
+  </data>
+  <data name="DifficultyEasy" xml:space="preserve">
+    <value>Easy</value>
+  </data>
+  <data name="DifficultyMedium" xml:space="preserve">
+    <value>Medium</value>
+  </data>
+  <data name="DifficultyHard" xml:space="preserve">
+    <value>Hard</value>
+  </data>
+  <data name="RankRecruit" xml:space="preserve">
+    <value>Recruit</value>
+  </data>
+  <data name="RankLieutenant" xml:space="preserve">
+    <value>Lieutenant</value>
+  </data>
+  <data name="RankCommander" xml:space="preserve">
+    <value>Commander</value>
+  </data>
+  <data name="RankAdmiral" xml:space="preserve">
+    <value>Admiral</value>
+  </data>
+  <data name="RankFleetAdmiral" xml:space="preserve">
+    <value>Fleet Admiral</value>
+  </data>
+  <data name="AchievementNone" xml:space="preserve">
+    <value>No medals unlocked yet.</value>
+  </data>
+  <data name="AchievementFirstVictory" xml:space="preserve">
+    <value>FIRST VICTORY</value>
+  </data>
+  <data name="AchievementSharpshooter" xml:space="preserve">
+    <value>SHARPSHOOTER (80%+)</value>
+  </data>
+  <data name="AchievementWinStreak" xml:space="preserve">
+    <value>WIN STREAK (3)</value>
+  </data>
+  <data name="AchievementVeteran" xml:space="preserve">
+    <value>VETERAN (10 WINS)</value>
+  </data>
+  <data name="LevelProgressFormat" xml:space="preserve">
+    <value>{0} / 500 XP to next level</value>
+  </data>
+  <data name="StatusInitial" xml:space="preserve">
+    <value>Change your captain name or difficulty, then save.</value>
+  </data>
+  <data name="StatusSaved" xml:space="preserve">
+    <value>Captain profile saved on this device.</value>
+  </data>
+  <data name="StatusInvalidName" xml:space="preserve">
+    <value>Captain name must be 2–24 characters.</value>
+  </data>
+  <data name="StatusInvalidDifficulty" xml:space="preserve">
+    <value>Select a valid difficulty.</value>
+  </data>
+  <data name="StatusLoadError" xml:space="preserve">
+    <value>Could not load profile: {0}</value>
+  </data>
+  <data name="StatusSaveError" xml:space="preserve">
+    <value>Save failed: {0}</value>
+  </data>
+  <data name="LanguageEnglish" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="LanguageFrench" xml:space="preserve">
+    <value>French</value>
+  </data>
+  <data name="DefaultCaptainName" xml:space="preserve">
+    <value>Captain</value>
+  </data>
+</root>
