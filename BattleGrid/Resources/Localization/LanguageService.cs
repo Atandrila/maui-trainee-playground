@@ -27,7 +27,6 @@ public sealed class LanguageService
         _languageCode = code;
         AppResources.Culture = CultureInfo.GetCultureInfo(code);
         Preferences.Default.Set(_languagePreferenceKey, code);
-        LocalizedStrings.Instance.Refresh();
         LanguageChanged?.Invoke(this, EventArgs.Empty);
     }
 }

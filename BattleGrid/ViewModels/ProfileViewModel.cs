@@ -10,7 +10,7 @@ public sealed class ProfileViewModel : ObservableObject
 {
     private readonly PlayerDataService _playerDataService;
     private readonly LanguageService _languageService;
-    private string _captainName = AppResources.Get("DefaultCaptainName");
+    private string _captainName = GetText("DefaultCaptainName");
     private string _statusKey = "StatusInitial";
     private string? _statusDetail;
     private int _level = 1, _xp, _wins, _losses, _bestStreak, _currentStreak;
@@ -42,15 +42,15 @@ public sealed class ProfileViewModel : ObservableObject
     public int BestStreak { get => _bestStreak; private set => SetProperty(ref _bestStreak, value); }
     public int CurrentStreak { get => _currentStreak; private set => SetProperty(ref _currentStreak, value); }
     public double LevelProgress { get => _levelProgress; private set => SetProperty(ref _levelProgress, value); }
-    public string Rank => AppResources.Get(_rankKey);
+    public string Rank => GetText(_rankKey);
     public string Achievements => _achievementKeys.Count == 0
-        ? AppResources.Get("AchievementNone")
-        : string.Join("  •  ", _achievementKeys.Select(AppResources.Get));
+        ? GetText("AchievementNone")
+        : string.Join("  •  ", _achievementKeys.Select(GetText));
     public string LevelProgressText => string.Format(AppResources.Culture,
-        AppResources.Get("LevelProgressFormat"), XP % 500);
+        GetText("LevelProgressFormat"), XP % 500);
     public string StatusMessage => _statusDetail is null
-        ? AppResources.Get(_statusKey)
-        : string.Format(AppResources.Culture, AppResources.Get(_statusKey), _statusDetail);
+        ? GetText(_statusKey)
+        : string.Format(AppResources.Culture, GetText(_statusKey), _statusDetail);
     public bool IsBusy
     {
         get => _isBusy;
@@ -83,6 +83,9 @@ public sealed class ProfileViewModel : ObservableObject
         }
     }
 
+    private static string GetText(string key) =>
+        AppResources.ResourceManager.GetString(key, AppResources.Culture) ?? key;
+
     public ICommand SaveCommand { get; }
 
     private void SetStatus(string key, string? detail = null)
@@ -97,9 +100,9 @@ public sealed class ProfileViewModel : ObservableObject
         _updatingOptions = true;
         Difficulties = new ObservableCollection<string>(new[]
         {
-            AppResources.Get("DifficultyEasy"),
-            AppResources.Get("DifficultyMedium"),
-            AppResources.Get("DifficultyHard")
+            GetText("DifficultyEasy"),
+            GetText("DifficultyMedium"),
+            GetText("DifficultyHard")
         });
         OnPropertyChanged(nameof(Difficulties));
         _updatingOptions = false;
@@ -110,8 +113,8 @@ public sealed class ProfileViewModel : ObservableObject
     {
         Languages = new ObservableCollection<string>(new[]
         {
-            AppResources.Get("LanguageEnglish"),
-            AppResources.Get("LanguageFrench")
+            GetText("LanguageEnglish"),
+            GetText("LanguageFrench")
         });
         OnPropertyChanged(nameof(Languages));
         OnPropertyChanged(nameof(SelectedLanguageIndex));
@@ -191,7 +194,6 @@ public sealed class ProfileViewModel : ObservableObject
         {
             var p = await _playerDataService.LoadAsync();
             p.CaptainName = name;
-            // Store stable language-independent codes in the existing JSON schema.
             p.PreferredDifficulty = _difficultyCodes[SelectedDifficultyIndex];
             await _playerDataService.SaveAsync();
             CaptainName = name;
